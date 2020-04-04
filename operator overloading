@@ -1,0 +1,82 @@
+C++
+plural +/-
+friend function：
+
+#include<iostream>
+using namespace std;
+class complex {
+public:
+	complex(double r = 0, double i = 0) :r(r), i(i) {
+		cout << "***Constructor!"; display();
+	}
+	complex(const complex& c) :r(c.r), i(c.i) {
+		cout << "***Copy Constructor!"; display();
+	}
+	~complex(){
+		cout << "***Destructor!"; display();
+	}
+	void display() {
+		cout << '(' << r << ',' << i << ')' << endl;
+	}
+	friend complex operator +(const complex& c1, const complex& c2);
+	friend complex operator - (const complex & c1, const complex & c2);
+private:
+	double r;
+	double i;
+};
+complex operator +(const complex& c1, const complex& c2) {
+	return complex(c1.r + c2.r, c1.i + c2.i);
+}
+complex operator - (const complex& c1, const complex& c2) {
+	return complex(c1.r - c2.r, c1.i - c2.i);
+}
+int main() {
+	complex c1(6, 2), c2(3, 4), c3;
+	cout << "c1="; c1.display();
+	cout << "c2="; c2.display();
+	c3 = c1 + c2;
+	cout << "c3=c1+c2="; c3.display();
+	c3 = c1 - c2;
+	cout << "c3=c1-c2="; c3.display();
+	return 0;
+}
+
+
+members function：
+
+#include<iostream>
+using namespace std;
+class complex {
+public:
+	complex(double r = 0, double i = 0) :r(r), i(i) {
+		cout << "***Constructor!"; display();
+	}
+	complex(const complex& c) :r(c.r), i(c.i) {
+		cout << "***Copy Constructor!"; display();
+	}
+	~complex(){
+		cout << "***Destructor!"; display();
+	}
+	void display() {
+		cout << '(' << r << ',' << i << ')' << endl;
+	}
+	complex operator +(const complex &c2) {
+		return complex(r + c2.r, i + c2.i);
+	}
+	complex operator -(const complex &c2) {
+		return complex(r - c2.r, i - c2.i);
+	}
+private:
+	double r;
+	double i;
+};
+int main() {
+	complex c1(3, 5), c2(2, 10), c3;
+	cout << "c1="; c1.display();
+	cout << "c2="; c2.display();
+	c3 = c1 - c2;
+	cout << "c3=c1-c2="; c3.display();
+	c3 = c1 + c2;
+	cout << "c3=c1+c2="; c3.display();
+	return 0;
+}
