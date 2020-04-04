@@ -9,7 +9,7 @@ public:
 	complex(double r = 0, double i = 0) :r(r), i(i) {
 		cout << "***Constructor!"; display();
 	}
-	complex(const complex& c) :r(c.r), i(c.i) {
+	complex(const complex& c) :r(c.r), i(c.i) {//pay attention to "const"
 		cout << "***Copy Constructor!"; display();
 	}
 	~complex(){
