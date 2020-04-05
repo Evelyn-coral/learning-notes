@@ -1,6 +1,8 @@
-C++
+/*C++
 plural +/-
 friend function：
+*/
+
 
 #include<iostream>
 using namespace std;
@@ -42,7 +44,7 @@ int main() {
 }
 
 
-members function：
+//members function：
 
 #include<iostream>
 using namespace std;
