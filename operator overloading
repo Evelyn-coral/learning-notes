@@ -1,5 +1,5 @@
 /*C++
-plural +/-
+通过+-操作符重载来实现复数加减法
 friend function：
 */
 #include<iostream>
@@ -25,7 +25,8 @@ private:
 	double i;
 };
 complex operator +(const complex& c1, const complex& c2) {
-	return complex(c1.r + c2.r, c1.i + c2.i);
+        //引用方式，这里加上const可以避免引用方式的弊端
+	return complex(c1.r + c2.r, c1.i + c2.i);//返回无名对象
 }
 complex operator - (const complex& c1, const complex& c2) {
 	return complex(c1.r - c2.r, c1.i - c2.i);
