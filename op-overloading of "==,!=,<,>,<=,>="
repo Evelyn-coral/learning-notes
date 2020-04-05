@@ -1,0 +1,114 @@
+/*声明String类，重载操作符==,!=,<,>,<=,>=，同时在主函数main中利用重载后的操作符讨论各种情况*/
+
+#include<iostream>
+#include<cstring>
+#pragma warning(disable:4996)
+using namespace std;
+//将操作符重载的成员函数的形参设置为引用方式
+class String {
+public:
+	String(const char* s);
+	String(const String& p);
+	~String() {//析构函数
+		cout << "     === Destructor!  " << str << endl;
+		delete[]str;
+	}
+	void Set(const char* s);
+	void Print();
+	bool operator ==(const String &str2);
+	bool operator >(const String &str2);
+	bool operator <(const String &str2);
+	bool operator !=(const String &str2);
+	bool operator >=(const String &str2);
+	bool operator <=(const String &str2);
+private:
+	char* str;
+};
+String::String(const char* s) {//构造函数
+	str = new char[strlen(s) + 1];
+	strcpy(str, s);
+	cout << "     === Constructor!  " << str << endl;
+}
+String::String(const String& p) {//复制构造函数
+	str = new char[strlen(p.str) + 1];
+	strcpy(str, p.str);
+	cout << "     === Copy Constructor!  " << str << endl;
+}
+void String::Set(const char* s) {//设置新值函数
+	delete[]str;
+	str = new char[strlen(s) + 1];
+	strcpy(str, s);
+}
+void String::Print() {//打印输出函数
+	cout << str << endl;
+}
+bool String::operator==(const String &str2) {
+	if (strcmp(str, str2.str) == 0)
+		return true;
+	else
+		return false;
+}
+bool String::operator >(const String &str2) {
+	if (strcmp(str, str2.str) > 0)
+		return true;
+	else
+		return false;
+}
+bool String::operator<(const String &str2) {
+	if (strcmp(str, str2.str) < 0)
+		return true;
+	else
+		return false;
+}
+bool String::operator!=(const String &str2) {
+	if (strcmp(str, str2.str) != 0)
+		return true;
+	else
+		return false;
+}
+bool String::operator>=(const String &str2) {
+	if (strcmp(str, str2.str) >= 0)
+		return true;
+	else
+		return false;
+}
+bool String::operator<=(const String &str2) {
+	if (strcmp(str, str2.str) <= 0)
+		return true;
+	else
+		return false;
+}
+int main() {
+	//直接确定两个字符串s1,s2
+	String s1("asnkhuuiew"), s2("dkjsabjkue");
+	cout << "s1="; s1.Print();
+	cout << "s2="; s2.Print();
+	if (s1 == s2)
+		cout << "s1==s2" << endl;
+	else if (s1 > s2)
+		cout << "s1>s2" << endl;
+	else if (s1 < s2)
+		cout << "s1<s2" << endl;
+	if (s1 <= s2)
+		cout << "s1<=s2" << endl;
+	else if (s1 >= s2)
+		cout << "s1>=s2" << endl;
+	//从键盘输入两个字符串str1,str2
+	cout << "  *** please input two strings:";
+	char* str1 = new char[20], * str2 = new char[20];
+	cin >> str1 >> str2;
+	s1.Set(str1); s2.Set(str2);
+	cout << "s1="; s1.Print();
+	cout << "s2="; s2.Print();
+	if (s1 == s2)
+		cout << "s1==s2" << endl;
+	else if (s1 > s2)
+		cout << "s1>s2" << endl;
+	else if (s1 < s2)
+		cout << "s1<s2" << endl;
+	if (s1 <= s2)
+		cout << "s1<=s2" << endl;
+	else if (s1 >= s2)
+		cout << "s1>=s2" << endl;
+	return 0;
+}
