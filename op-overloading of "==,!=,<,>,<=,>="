@@ -43,40 +43,22 @@ void String::Print() {//打印输出函数
 	cout << str << endl;
 }
 bool String::operator==(const String &str2) {
-	if (strcmp(str, str2.str) == 0)
-		return true;
-	else
-		return false;
+	return (strcmp(str, str2.str) == 0);
 }
 bool String::operator >(const String &str2) {
-	if (strcmp(str, str2.str) > 0)
-		return true;
-	else
-		return false;
+	return (strcmp(str, str2.str) > 0);
 }
 bool String::operator<(const String &str2) {
-	if (strcmp(str, str2.str) < 0)
-		return true;
-	else
-		return false;
+	return (strcmp(str, str2.str) < 0);
 }
 bool String::operator!=(const String &str2) {
-	if (strcmp(str, str2.str) != 0)
-		return true;
-	else
-		return false;
+	return (strcmp(str, str2.str) != 0);
 }
 bool String::operator>=(const String &str2) {
-	if (strcmp(str, str2.str) >= 0)
-		return true;
-	else
-		return false;
+	return (strcmp(str, str2.str) >= 0);
 }
 bool String::operator<=(const String &str2) {
-	if (strcmp(str, str2.str) <= 0)
-		return true;
-	else
-		return false;
+	return (strcmp(str, str2.str) <= 0);
 }
 int main() {
 	//直接确定两个字符串s1,s2
